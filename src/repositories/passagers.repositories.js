@@ -1,7 +1,9 @@
 import db from "../database/database.js";
 
 async function getPassagers(page) {
-  const limit = page ? 25 : 100;
+  const MIN_PAGE_RESULTS = 25;
+  const MAX_PAGE_RESULTS = 100;
+  const limit = page ? MIN_PAGE_RESULTS : MAX_PAGE_RESULTS;
   const { rows } = await db.query(
     `
         SELECT 
